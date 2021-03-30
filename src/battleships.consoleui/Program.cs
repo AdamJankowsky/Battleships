@@ -13,7 +13,7 @@ namespace battleships.consoleui
 
             Console.WriteLine("Game initiaded let's start playing");
 
-            game.PrintBoard();
+            game.PrintBoard(); // for debug and testing purposes
 
             while(!game.GameFinished())
             {

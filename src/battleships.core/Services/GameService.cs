@@ -66,9 +66,5 @@ namespace battleships.core.Services
             randomShipsGenerator = new RandomShipsGenerator();
             _ships = randomShipsGenerator.RandomizeShips();
         }
-
-
-
-
     }
 }

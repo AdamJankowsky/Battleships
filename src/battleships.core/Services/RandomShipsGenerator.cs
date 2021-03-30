@@ -1,4 +1,5 @@
-﻿using battleships.core.Models;
+﻿using battleships.core.Exceptions;
+using battleships.core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,9 @@ namespace battleships.core.Services
         {
             var shipList = new List<Ship>();
 
+            CreateShip(shipList, 4);
             CreateShip(shipList, 3);
-            CreateShip(shipList, 2);
-            CreateShip(shipList, 2);
+            CreateShip(shipList, 3);
 
             return shipList;
         }
@@ -41,7 +42,7 @@ namespace battleships.core.Services
 
                 try
                 {
-                    for (int i = 1; i <= shipLength; i++)
+                    for (int i = 1; i < shipLength; i++)
                     {
                         cellList.Add(GetNextPosision(shipList, rootPosition, goHorizontal, goPositive, i));
                     }   
@@ -106,6 +107,11 @@ namespace battleships.core.Services
 
         public string ConvertToSymbolic((int, int) positionInt)
         {
+            if(positionInt.Item1 > maxColumns || positionInt.Item1 < 1
+                || positionInt.Item2 > maxRows || positionInt.Item2 < 1)
+            {
+                throw new ConvertToSymbolicException(positionInt.Item1, positionInt.Item2);
+            }
             return $"{(char)(64 + positionInt.Item1)}{positionInt.Item2}";
         }
 

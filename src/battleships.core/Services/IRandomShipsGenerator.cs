@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("battleships.core.tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace battleships.core.Services
 {
     internal interface IRandomShipsGenerator

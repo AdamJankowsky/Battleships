@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace battleships.core
+namespace battleships.core.Exceptions
 {
     internal class CellUnplaceableException : Exception
     {
